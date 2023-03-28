@@ -10,6 +10,7 @@ namespace CleanArchitecture.Application.UnitTests.Mocks
         public static Mock<IVideoRepository> GetVideoRepository()
         {
             Fixture fixture = new Fixture();
+            fixture.Behaviors.Add(new OmitOnRecursionBehavior());
             List<Video> videos = fixture.CreateMany<Video>().ToList();
 
             Mock<IVideoRepository> mockRepository = new Mock<IVideoRepository>();
